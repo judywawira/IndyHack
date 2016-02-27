@@ -1,0 +1,46 @@
+---
+title: "IndyHack"
+author: "Judy Gichoya"
+date: "February 27, 2016"
+output: html_document
+---
+
+```{r}
+library(plyr)
+suppressPackageStartupMessages(library(googleVis))
+options(scipen=999)
+
+data <- read.delim('data.txt',stringsAsFactors=FALSE)
+
+#General data formats - Ideally should format all the date columns to this 
+data$TransDt <-as.POSIXct(data$TransDt,format="%Y-%m-%d")
+data$TransDt <- as.Date(data$TransDt)
+
+#Looking through the Transaction Numbers , I picked up duplicate transaction numbers eg -- 24717055084870844284928 . I checked why there would be duplicates in her e
+
+subset(data,data$TransNbr=='24717055084870844284928')
+
+#Made by different employees
+#Same transaction dates - all different values -- These were airlines Delta AIR /American Air as flight purchases
+#This was a good understanding of this field
+
+
+```
+
+Note on Data available 
+
+The most recent transaction is 
+```{r}
+max(data$TransDt)
+```
+
+Earliest transaction available is from 
+```{r}
+min(data$TransDt)
+```
+
+
+```{r}
+#Pending subset(data,data$TransNbr=='74692165352000763985920')
+```
+
