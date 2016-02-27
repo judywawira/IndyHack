@@ -1,38 +1,59 @@
 library(shiny)
+library(ggplot2)
+library(DT)
 
-shinyUI(navbarPage("My Application",
+shinyUI(navbarPage("#IndyHacks",
                    tabPanel(
-                     "Component 1",
-                     sidebarLayout(
-                       sidebarPanel(
-                         selectizeInput(
-                           'id', label="Year", choices=NULL, multiple=F, selected="X2015",
-                           options = list(create = TRUE,placeholder = 'Choose the year')
+                     "Home",
+                     fluidPage(
+                       titlePanel("Detailed Dashboard"),
+                       
+                       # Create a new Row in the UI for selectInputs
+                       fluidRow(
+                         column(4,
+                                selectInput("day",
+                                            "Date of Transaction:",
+                                            c("All",
+                                              unique(as.character(data$TransDt))))
                          ),
-                         # Make a list of checkboxes
-                         radioButtons("radio", label = h3("Radio buttons"),
-                                      choices = list("Choice 1" = 1, "Choice 2" = 2)
+                         column(4,
+                                selectInput("mer",
+                                            "Merchant:",
+                                            c("All",
+                                              unique(as.character(data$Merchant))))
+                         ),
+                         column(4,
+                                selectInput("agency",
+                                            "Agency:",
+                                            c("All",
+                                              unique(as.character(data$AgencyGLKey))))
+                         ),
+                         column(4,
+                                selectInput("fund",
+                                            "Fund:",
+                                            c("All",
+                                              unique(as.character(data$FundKey))))
+                         ),
+                         column(4,
+                                selectInput("account",
+                                            "Account:",
+                                            c("All",
+                                              unique(as.character(data$AccountKey))))
                          )
                        ),
-                       mainPanel( plotOutput("distPlot") )
-                     )
-                     ), #end tab panel
-                   tabPanel(
-                     "Component 2",
-                     sidebarLayout(
-                       sidebarPanel(
-                         
-                       ),
-                       mainPanel( plotOutput("distPlot") )
+                       # Create a new row for the table.
+                       fluidRow(
+                         DT::dataTableOutput("table")
+                       )
                      )
                    ), #end tab panel
                    tabPanel(
-                     "Component 3",
+                     "Graphs",
                      sidebarLayout(
                        sidebarPanel(
                          
                        ),
-                       mainPanel( plotOutput("distPlot") )
+                       mainPanel()
                      )
                    ) #end tab panel
         )#end nav bar
