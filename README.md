@@ -1,4 +1,5 @@
 ## About
+
 This is a summary of coding done for the #IndyHack 2016, see competition details here
 http://www.indychamber.com/incapitolhack/
 
@@ -13,6 +14,7 @@ I used R and shiny to create an interactive dashboard that allows one to filter 
 if you were curious if a specific vendor was paid on a certain date you can filter on Merchant and Date of Transaction
 
 ## Next Steps
+
 1. Subset data to show what i thought were relevant fields
 2. Add a more or complete fields data
 3. Upload and download buttons
