@@ -7,6 +7,7 @@ output: html_document
 
 ```{r}
 library(plyr)
+library(shiny)
 suppressPackageStartupMessages(library(googleVis))
 options(scipen=999)
 
@@ -15,6 +16,8 @@ data <- read.delim('data.txt',stringsAsFactors=FALSE)
 #General data formats - Ideally should format all the date columns to this 
 data$TransDt <-as.POSIXct(data$TransDt,format="%Y-%m-%d")
 data$TransDt <- as.Date(data$TransDt)
+#mydata$yr <- format(mydata$TransDt,'%Y')
+#mydata$mo <- format(mydata$TransDt,'%m')
 
 #Looking through the Transaction Numbers , I picked up duplicate transaction numbers eg -- 24717055084870844284928 . I checked why there would be duplicates in her e
 

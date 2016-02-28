@@ -1,7 +1,7 @@
 name: HackApp
 account: gichoya
 server: shinyapps.io
-appId: 85811
-bundleId: 382237
+appId: 85843
+bundleId: 382347
 url: https://gichoya.shinyapps.io/HackApp/
-when: 1456614617.79738
+when: 1456625588.02105
